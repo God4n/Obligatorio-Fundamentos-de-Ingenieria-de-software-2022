@@ -1,4 +1,4 @@
-# Informe académico entrega 2 (md)
+# Informe académico entrega 2
 
 Fecha de entrega: 28-nov-2022
 
@@ -128,17 +128,17 @@ Realizando un análisis con la herramienta “WAVE” (extensión del navegador)
 
 <tr>
 
-<td><img src="/src/fotos_informe/wcag1.png" width="300"><td>
+<td><img src="/src/fotos_informe/wcag1.png" width="300"></td>
 
-<td><img src="/src/fotos_informe/wcag2.png" width="300"><td>
+<td><img src="/src/fotos_informe/wcag2.png" width="300"></td>
 
 </tr>
 
 <tr>
 
-<td><img src="/src/fotos_informe/wcag3.png" width="300"><td>
+<td><img src="/src/fotos_informe/wcag3.png" width="300"></td>
 
-<td><img src="/src/fotos_informe/wcag4.png" width="300"><td>
+<td><img src="/src/fotos_informe/wcag4.png" width="300"></td>
 
 </tr>
 
@@ -232,8 +232,7 @@ Misión: Entrar en contacto con la app y probar sistema de predicciones.
 Entorno: Windows 11 y Google Chrome 107.0.5304.107
 
 Duración: Inicio: 25/11/2022 14:37
-
-           Final: 25/11/2022 15:09
+          Final: 25/11/2022 15:09
 
 Notas:
 
@@ -270,8 +269,7 @@ Misión: Probar todas las funcionalidades de la aplicación.
 Entorno: Windows 10 y Google Chrome 107.0.5304.121
 
 Duración: Inicio: 26/11/2022 15:03
-
-           Final: 26/11/2022 15:27
+          Final: 26/11/2022 15:27
 
 Notas:
 
@@ -290,8 +288,7 @@ Misión: Buscar posibles vulnerabilidades.
 Entorno: Windows 10 y Google Chrome 107.0.5304.121
 
 Duración: Inicio: 26/11/2022 15:30
-
-           Final: 26/11/2022 16:00
+          Final: 26/11/2022 16:00
 
 Notas:
 
