@@ -1,0 +1,776 @@
+@use "@material/tab-bar/mdc-tab-bar";
+@use "@material/tab-scroller/mdc-tab-scroller";
+@use "@material/tab-indicator/mdc-tab-indicator";
+@use "@material/tab/mdc-tab";
+@use "@material/card";
+@use "@material/checkbox"; // Required only for data table with row selection.
+@use "@material/icon-button";
+@use "@material/icon-button/styles" as icon-style;
+@use "@material/button/styles" as btn-style;
+@use "@material/data-table/data-table";
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/dialog";
+
+@include dialog.core-styles;
+@include checkbox.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
+@include card.core-styles;
+
+body {
+    background-color: #1b5e20;
+    font-family: 'Roboto';
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    background-color: #003300;
+}
+
+header{
+  position: relative;
+  display: inline-block;
+  padding-top: 4rem;
+  width: 100%;
+  padding: 10px;
+  margin: none;
+  left: 0;
+  top: 0;
+  text-align: left;
+  background-color: #003300;
+  color: white;
+  font-size: 30px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.center2 {
+  margin: auto;
+  width: 50%;
+  padding: 0px;
+}
+
+.center3 {
+  
+}
+
+.cards-de-a-2 {
+  margin: 0;
+  display: flex;
+  flex: left;
+}
+
+.contornoPerfil {
+  width: 410px;
+  height: 600px;
+  background: #4c8c4a;
+  border-radius: 15px;
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 5px;
+  margin-bottom: 20px;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgba(255, 255, 255, 0),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+  img {
+    width: 400px;
+    border-radius: 15px;
+  }
+}
+
+.fixture-partido-equipos {
+  text-align: left;
+  width: 9vh;
+  height: 9vh;
+  display: flex;
+  margin-left: 9vw;
+
+  img {
+    margin-top: 1vh;
+    border-radius: 50px;
+  }
+
+  a.vs {
+    margin-top: 40%;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+}
+
+.carta-partido-equipos {
+  text-align: left;
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  margin-left: 1.3vw;
+  margin-top: 4vw;
+
+  img {
+    border-radius: 50px;
+  }
+
+  a.vs {
+    margin-top: 40%;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+}
+
+.carta-partido-equipos {
+  width: 100%;
+  height: 30%;
+  padding-top: 0%;
+  padding-left: 5%;
+  
+  img {
+    width: 30%;
+    height: 100%;
+    border-radius: 30px;
+  }
+
+  a.vs {
+    margin-top: 10%;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+}
+
+#btnHorario {
+  float: right;
+  background-color: #58a5f0;
+  border-radius: 0px 15px 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 30%;
+  font-size: 100%;
+  //margin-right: 5%;
+  //margin-top: 5%;
+  i {
+    //padding-left: 5;
+    align-self: center;
+  }
+}
+
+#btnHorarioLive {
+  float: right;
+  background-color: red;
+  border-radius: 0px 15px 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 30%;
+  font-size: 100%;
+  //margin-right: 5%;
+  //margin-top: 5%;
+  i {
+    //padding-left: 5;
+    align-self: center;
+  }
+}
+
+#btnLive {
+  background-color: red;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-left: 10vw;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#btnHora {
+  background-color: #004c8c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-left: 10vw;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.fecha {
+  color: white;
+  //float: right;
+  position: relative;
+  background-color: #003300;
+  border: 3px solid #003300;
+  border-radius: 10px;
+  padding: 5px;
+  display: block;
+}
+
+// edit de los web components
+
+.mdc-card-content {
+    padding: 16px;
+}
+
+.mdc-card {
+    height: 17vw;
+    width: 17vw;
+    background: #0277bd;
+    flex: 0 0 auto;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 10px;
+    margin-bottom: 20px;
+    float: left;
+    box-shadow:
+      inset 0 -3em 3em rgba(0,0,0,0.1),
+      0 0  0 2px rgba(255, 255, 255, 0),
+      0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+    h1 {
+      margin-left: 1vw;
+      color: #fff;
+      font-size: 100%;
+      width: 50%;
+      float: left;
+      margin-bottom: 5%;
+    }
+
+    h3 {
+      margin-top: 5%;
+      margin-bottom: 5%;
+      color: #fff;
+      text-align: center; 
+    }
+    h2 {
+      margin-top: 0%;
+      color: #fff;
+      text-align: center; 
+    }
+}
+
+.mdc-card:hover {
+  border-width: 3px;
+  border-style: solid;
+  border-color: #e0e0e0;
+}
+
+.mdc-card-partido {
+  width: 99%;
+  height: 10vh;
+  background: #0277bd;
+  border-radius: 5px;
+  margin: 5px;
+  margin-bottom: 10px;
+  box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgba(255, 255, 255, 0),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.mdc-card-noticias {
+  height: 350px;
+  width: 600px;
+  height: 40vh;
+  width: 35vw;
+  background: #fff;
+  border-radius: 15px;
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 5px;
+  margin-bottom: 20px;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgba(255, 255, 255, 0),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+  img {
+    height: 40vh;
+    width: 35vw;
+    border-radius: 15px;
+  }
+}
+
+.mdc-card-sponsor {
+  height: 62px;
+  width: 300px;
+  background: #fff;
+  border-radius: 15px;
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-bottom: 20px;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgba(255, 255, 255, 0),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+  img {
+    height: 62px;
+    width: 300px;
+    border-radius: 15px;
+  }
+}
+
+.mdc-card-sponsor-inicio {
+  display: none;
+}
+
+div.scrollmenu {
+  //background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  align-items: center;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -webkit-overflow-scrolling: touch;
+}
+
+div.scrollmenu2 {
+  display: flex;
+
+
+  //background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  align-items: center;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -webkit-overflow-scrolling: touch;
+}
+
+div.scrollmenu {
+  //background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  align-items: center;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -webkit-overflow-scrolling: touch;
+}
+
+div.scrollmenu div:hover {
+  border-width: 3px;
+  border-style: solid;
+  border-color: #e0e0e0;
+}
+
+.mdc-tab--active .mdc-tab__text-label {
+    color: #0277bd;
+    /* @alternate */
+    color: var(--mdc-theme-primary, #0277bd);
+  }
+  .mdc-tab--active .mdc-tab__icon {
+    color: #0277bd;
+    /* @alternate */
+    color: var(--mdc-theme-primary, #0277bd);
+    fill: currentColor;
+  }
+
+  .mdc-tab--stacked:not(.mdc-tab--active) .mdc-tab__text-label {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    color: #0277bd;
+    /* @alternate */
+    color: var(--mdc-theme-primary, #ffffff);
+    fill: currentColor;
+  }
+
+  .mdc-tab--stacked:not(.mdc-tab--active) .mdc-tab__icon {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    color: #0277bd;
+    /* @alternate */
+    color: var(--mdc-theme-primary, #ffffff);
+    fill: currentColor;
+  }
+
+  .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+    border-color: #0277bd;
+    /* @alternate */
+    border-color: var(--mdc-theme-primary, #0277bd);
+  }
+
+  .mdc-tab .mdc-tab__ripple::before, .mdc-tab .mdc-tab__ripple::after {
+    background-color: #004c8c;
+    /* @alternate */
+    background-color: var(--mdc-ripple-color, var(--mdc-theme-primary, #004c8c));
+  }
+  
+  .mdc-tab--stacked {
+    height: 72px;
+    color:#ffffff;
+  }
+
+  .mdc-top-app-bar {
+    background-color: #003300;
+    /* @alternate */
+    background-color: var(--mdc-theme-primary, #003300);
+    color: white;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 4;
+  }
+
+  #puntos {
+    color: white;
+    float: right;
+    border: 3px solid #4c8c4a;
+    border-radius: 10px;
+    padding: 5px;
+    flex: left;
+    display: flex;
+  }
+
+  .mdc-data-table {
+    width: 100%;
+    color: #fff;
+    background-color: #1b5e20;
+    /* @alternate */
+    background-color: var(--mdc-theme-surface, #1b5e20);
+    border-radius: 10px;
+    /* @alternate */
+    border-radius: var(--mdc-shape-medium, 10px);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    -webkit-overflow-scrolling: touch;
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .mdc-data-table__header-row {
+    background-color: #003300;
+    color: white;
+  }
+
+  .mdc-data-table__row {
+    background-color: #4c8c4a;
+    color: white;
+  }
+
+  .mdc-data-table__table-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  #cerrarDialogo{
+    float: right;
+  }
+
+  .mdc-button--raised:not(:disabled) {
+    border-radius: 10px;
+    background-color: #0277bd;
+    /* @alternate */
+    background-color: var(--mdc-protected-button-container-color, var(--mdc-theme-primary, #0277bd));
+  }
+
+  // Responsive:
+
+  @media screen and (max-width: 900px) {
+    .mdc-card-noticias {
+      height: 200px;
+      width: 300px;
+      height: 30vh;
+      width: 80vw;
+      background: #0277bd;
+      border-radius: 15px;
+      position: relative;
+      display: inline-block;
+      flex: 0 0 auto;
+      margin: 5px;
+      margin-bottom: 20px;
+      box-shadow:
+           inset 0 -3em 3em rgba(0,0,0,0.1),
+                 0 0  0 2px rgba(255, 255, 255, 0),
+                 0.3em 0.3em 1em rgba(0,0,0,0.3);
+      img {
+        height: 30vh;
+        width: 80vw;
+        border-radius: 15px;
+      }
+    }
+
+    .mdc-card-sponsor {
+      display: none;
+    }
+
+    .mdc-card-sponsor-inicio {
+      height: 70px;
+      width: 320px;
+      background: #fff;
+      border-radius: 15px;
+      position: relative;
+      display: inline-block;
+      flex: 0 0 auto;
+      margin-bottom: 10px;
+      box-shadow:
+           inset 0 -3em 3em rgba(0,0,0,0.1),
+                 0 0  0 2px rgba(255, 255, 255, 0),
+                 0.3em 0.3em 1em rgba(0,0,0,0.3);
+    
+      img {
+        height: 70px;
+        width: 320px;
+        border-radius: 15px;
+      }
+    }
+
+    .contornoPerfil {
+      width: 80vw;
+      height: 60vh;
+      background: #4c8c4a;
+      border-radius: 15px;
+      position: relative;
+      display: inline-block;
+      flex: 0 0 auto;
+      margin: 5px;
+      margin-bottom: 20px;
+    
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      align-items: center;
+      
+      box-shadow:
+           inset 0 -3em 3em rgba(0,0,0,0.1),
+                 0 0  0 2px rgba(255, 255, 255, 0),
+                 0.3em 0.3em 1em rgba(0,0,0,0.3);
+    
+      img {
+        width: 75vw;
+        height: 55vh;
+        border-radius: 15px;
+      }
+    }
+
+    .mdc-card-partido {
+      width: 97%;
+      height: 10vh;
+      background: #0277bd;
+      border-radius: 5px;
+      margin: 5px;
+      margin-bottom: 10px;
+      box-shadow:
+        inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0 2px rgba(255, 255, 255, 0),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+    }
+
+    .cards-de-a-2 {
+      display: flex;
+      margin: 0;
+    }
+
+    .center3 {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .center2 {
+      margin: auto;
+      width: 100%;
+      padding: 0px;
+    }
+    
+    .fixture-partido-equipos {
+      text-align: left;
+      width: 9vh;
+      height: 9vh;
+      display: flex;
+      margin-left: 15px;
+    
+      img {
+        margin-top: 1vh;
+        border-radius: 50px;
+      }
+    
+      a.vs {
+        margin-top: 40%;
+        color: #fff;
+        font-size: 20px;
+        margin-left: 40%;
+        margin-right: 40%;
+      }
+
+    }
+    
+    div.scrollmenu2 {
+      display: block;
+    }
+
+    .mdc-card {
+      height: 45vw;
+      width: 45vw;
+      background: #0277bd;
+      flex: 0 0 auto;
+      border-radius: 15px;
+      display: inline-block;
+      margin: 1.5vw;
+      float: left;
+      box-shadow:
+         inset 0 -5px 5px rgba(0,0,0,0.1),
+               0 0  0 3px rgba(255, 255, 255, 0),
+               3px 3px 3px rgba(0,0,0,0.3);
+  
+      h1 {
+        margin-left: 1vw;
+        color: #fff;
+        font-size: 100%;
+        width: 50%;
+        float: left;
+      }
+  
+      h3 {
+        margin-top: 5%;
+        margin-bottom: 0%;
+        color: #fff;
+        text-align: center; 
+      }
+      h2 {
+        margin-top: 0%;
+        color: #fff;
+        text-align: center; 
+      }
+
+    }
+
+    .carta-partido-equipos {
+      width: 100%;
+      height: 30%;
+      padding-top: 0%;
+      padding-left: 5%;
+      
+      img {
+        width: 30%;
+        height: 100%;
+        border-radius: 30px;
+      }
+    
+      a.vs {
+        margin-top: 10%;
+        color: #fff;
+        font-size: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      
+    }
+
+    #btnHorario {
+      float: right;
+      background-color: #58a5f0;
+      border-radius: 0px 15px 0px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      width: 30%;
+      font-size: 70%;
+      //margin-right: 5%;
+      //margin-top: 5%;
+      i {
+        //padding-left: 5;
+        align-self: center;
+      }
+    }
+    
+    #btnHorarioLive {
+      float: right;
+      background-color: red;
+      border-radius: 0px 15px 0px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      width: 30%;
+      font-size: 70%;
+      //margin-right: 5%;
+      //margin-top: 5%;
+      i {
+        //padding-left: 5;
+        align-self: center;
+      }
+    }
+
+  }
